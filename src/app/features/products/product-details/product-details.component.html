@@ -1,0 +1,91 @@
+<div class="product-details container">
+    <section class="product-details__main">
+        <!-- images slider -->
+        <app-slider [images]="product.images" [showControls]="false"></app-slider>
+        <!-- product info -->
+        <div class="product-details__info">
+            <h1>{{product.data[0].name}}</h1>
+
+            <app-rating></app-rating>
+            <div class="product-details__amount">
+                ${{product.price}}
+            </div>
+            <p class="product-details__desc">
+                {{product.data[0].description}}
+            </p>
+            <div class="product-details__add">
+                <div class="increment-control">
+                    <a class="increment-control__action" (click)="nItems=nItems-1" *ngIf="nItems>1">-</a>
+                    <input type="text" class="form-control" title="Qty" [value]="nItems">
+                    <a class="increment-control__action" (click)="nItems=nItems+1">+</a>
+                </div>
+                <button class="btn btn--primary" (click)="addToCart()">Add to cart</button>
+            </div>
+            <div class="product-details__meta" *ngIf="product.category">
+                Categories: <a rel="tag" href="#">{{product.category.name}}</a>
+            </div>
+        </div>
+    </section>
+
+    <app-tabs>
+        <ng-container class='header'>
+            <div class="tabs__header active" [ngClass]="{'active': isSelected===0}" (click)="isSelected=0"> Description
+            </div>
+            <div class="tabs__header" [ngClass]="{'active': isSelected===1}" (click)="isSelected=1"> Additional Information
+            </div>
+            <div class="tabs__header" [ngClass]="{'active': isSelected===2}" (click)="isSelected=2"> Reviews (2)
+            </div>
+
+        </ng-container>
+        <ng-container class='body'>
+            <div class="tabs__body" [ngClass]="{'active': isSelected===0}" >
+                <div class="product-details__desc">
+                    <p>
+                        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sagittis, massa fringilla consequat blandit, mauris ligula porta nisi, non tristique enim sapien vel
+                        nisl. Suspendisse vestibulum lobortis dapibus.
+                    </p>
+                    <p>
+                        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sagittis, massa fringilla consequat blandit, mauris ligula porta nisi, non tristique enim sapien vel
+                        nisl. Suspendisse vestibulum lobortis dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+                    </p>
+                </div>
+            </div>
+            <div class="tabs__body" [ngClass]="{'active': isSelected===1}">
+                <div class="product-details__desc">
+                    <p>
+                        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sagittis, massa fringilla consequat blandit, mauris ligula porta nisi, non tristique enim sapien vel
+                        nisl. Suspendisse vestibulum lobortis dapibus.
+                    </p>
+                    <p>
+                        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sagittis, massa fringilla consequat blandit, mauris ligula porta nisi, non tristique enim sapien vel
+                        nisl. Suspendisse vestibulum lobortis dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+                    </p>
+                </div>
+            </div>
+            <div class="tabs__body" [ngClass]="{'active': isSelected===2}">
+                <div class="product-details__desc">
+                    <p>
+                        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sagittis, massa fringilla consequat blandit, mauris ligula porta nisi, non tristique enim sapien vel
+                        nisl. Suspendisse vestibulum lobortis dapibus.
+                    </p>
+                    <p>
+                        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sagittis, massa fringilla consequat blandit, mauris ligula porta nisi, non tristique enim sapien vel
+                        nisl. Suspendisse vestibulum lobortis dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+                    </p>
+                </div>
+            </div>
+
+        </ng-container>
+    </app-tabs>
+    <div class="separator"></div>
+    <section class="realated-product">
+        <h3>Related <strong>Products</strong></h3>
+        <div class="item-listing__items item-listing--4items">
+            <!-- medium item -->
+            <!-- <app-product></app-product>
+            <app-product></app-product>
+            <app-product></app-product>
+            <app-product></app-product> -->
+        </div>
+    </section>
+</div>

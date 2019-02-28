@@ -1,0 +1,11 @@
+<div class="dropdown " [ngClass]="{'dropdown--left': direction=='left', 'dropdown--opened': open}">
+    <!-- header -->
+    <div class="dropdown__header" (click)="ddClick()">
+
+        <ng-content select=".header"></ng-content>
+    </div>
+
+    <!-- items -->
+
+    <ng-content select=".body"></ng-content>
+</div>

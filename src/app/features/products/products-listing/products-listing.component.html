@@ -1,0 +1,30 @@
+<section class="item-listing">
+    <!-- tools (sorting , change view , exporting) -->
+    <div class="item-listing__tools">
+        <select class="form-control" name="" id="">
+            <option value="index+1" *ngFor="let item of listingTools">{{item}}</option>
+        </select>
+        <a class="action-btn" href="#">
+            <i class="fas fa-plus"></i>
+        </a>
+    </div>
+    <!-- items -->
+    <div class="item-listing__items item-listing--3items">
+        <app-product *ngFor="let item of data" [product]="item"></app-product>
+
+    </div>
+    <!-- paging -->
+    <div class="paging">
+        <!-- left arrow -->
+        <div class="paging__arrow">
+            <i class="fas fa-angle-left"></i>
+        </div>
+        <!-- page number -->
+        <div class="paging__number" *ngFor="let dummy of ' '.repeat(itemsPerPage).split(''), let x = index">{{x+1}}</div>
+
+        <!-- right arrow -->
+        <div class="paging__arrow">
+            <i class="fas fa-angle-right"></i>
+        </div>
+    </div>
+</section>

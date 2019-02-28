@@ -1,0 +1,15 @@
+<div class="slider">
+    <div class="add-product__image-actions" *ngIf="showControls">
+        <div class="add-product__image-action">
+            <a (click)="controlsHandler(0)"><i class="fas fa-plus-square"></i></a>
+            <a (click)="controlsHandler(1)"><i class="fas fa-edit"></i></a>
+            <a (click)="controlsHandler(2)"><i class="fas fa-trash-alt"></i></a>
+        </div>
+    </div>
+    <div class="slider__items" #sliderItems>
+        <div class="slider__item" *ngFor="let item of images;let i = index" [ngClass]="{'active': i==selectedIndex}" [ngStyle]="{ 'background-image': 'url(' + images[0] + ')'}"></div>
+    </div>
+    <div class="slider__indicators">
+        <span class="slider__indicator" *ngFor="let dummy of ' '.repeat(images.length).split(''), let x = index" [ngClass]="{'active': x==selectedIndex}" (click)="selectedIndex=x"></span>
+    </div>
+</div>
