@@ -32,8 +32,8 @@
                     <div class="form-group">
                         <label for="">Satus</label>
                         <div class="form-group__radios">
-                            <div class="form-group__radio"><input [formControl]="onSaleControl.get('onSale')" type="radio" [value]="1"><span>On Sale</span></div>
-                            <div class="form-group__radio"><input [formControl]="onSaleControl.get('onSale')" type="radio" [value]="2"><span>Not On Sale</span></div>
+                            <div class="form-group__radio"><input [formControl]="onSaleControl" type="radio" [value]="1"><span>On Sale</span></div>
+                            <div class="form-group__radio"><input [formControl]="onSaleControl" type="radio" [value]="2"><span>Not On Sale</span></div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -41,11 +41,11 @@
                         <input formControlName="discount" class="form-control" type="text" name="txtDiscount" id="">
                     </div>
                 </div>
-                <div class="form-group" [formGroup]="paymentsFormGroup" [ngClass]="{'invalid': paymentsFormGroup.get('arr').errors&&paymentsFormGroup.get('arr').touched}">
+                <div class="form-group" [ngClass]="{'invalid': paymentsFormArray.errors}">
                     <label for="">Payment Types</label>
                     <div class="form-group__checkboxs">
-                        <div class="form-group__checkbox" formArrayName="arr" *ngFor="let item of paymentsFormGroup.controls.arr.controls; let i = index">
-                            <input [formControlName]="i" type="checkbox" name="" id="">
+                        <div class="form-group__checkbox" *ngFor="let item of paymentsFormArray.controls; let i = index">
+                            <input [formControl]="paymentsFormArray.controls[i]" type="checkbox" name="" id="">
                             <span>{{paymentTypes[i].name}}</span>
                         </div>
                     </div>
@@ -68,14 +68,14 @@
                             <a (click)="clearAllTags(tagBox)"><i class="fas fa-times"></i></a>
                         </div>
                     </div>
-                    <input class="taged-textbox__textbox form-control" type="text" name="" id="" (keydown)="addTag($event)">
+                    <input class="taged-textbox__textbox form-control" type="text" name="" id="" (keydown)="addTagHandler($event)">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item" *ngFor="let item of tagsDisplay">{{item.name}}</li>
                     </ul>
                 </div>
                 <div class="add-product__actions">
                     <button type='reset' class="btn btn--gray">Cancel</button>
-                    <button type='button' class="btn btn--primary" (click)="formSubmitHandler()">Add</button>
+                    <button type='button' class="btn btn--primary" (click)="formSubmitHandler()">{{submitBtnText}}</button>
                 </div>
             </div>
         </div>

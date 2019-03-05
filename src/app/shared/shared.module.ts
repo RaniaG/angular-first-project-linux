@@ -7,7 +7,9 @@ import {RatingComponent} from './rating/rating.component';
 import {SliderComponent} from './slider/slider.component';
 import {TabsComponent} from './tabs/tabs.component';
 import {DropdownComponent} from './dropdown/dropdown.component';
-import { MyIfDirective } from './my-if.directive';
+import { MyIfDirective } from './directives/my-if.directive';
+import { MyBehDirDirective } from './directives/my-beh-dir.directive';
+import { RepeatDirective } from './directives/repeat.directive';
 
 
 
@@ -21,6 +23,8 @@ import { MyIfDirective } from './my-if.directive';
     TabsComponent,
     DropdownComponent,
     MyIfDirective,
+    MyBehDirDirective,
+    RepeatDirective,
   ],
   imports: [
     CommonModule
@@ -33,7 +37,9 @@ import { MyIfDirective } from './my-if.directive';
     SliderComponent,
     TabsComponent,
     DropdownComponent,
-    MyIfDirective
+    MyIfDirective,
+    MyBehDirDirective,
+    RepeatDirective
   ]
 })
 export class SharedModule { }

@@ -1,6 +1,4 @@
-import { PaymentType } from './payment';
-import { Category } from './category';
-import { Tag } from './tag';
+
 
 export interface Product{
     id?:number;
@@ -12,7 +10,7 @@ export interface Product{
     price?:number;
     discount?:number;
     images:string[];
-    paymentType?:PaymentType;
+    paymentType?:number[];
     categoryId?:number;
     tags:number[];
 }

@@ -5,9 +5,11 @@ import {ProductComponent} from './product/product.component';
 import {ProductsListingComponent} from './products-listing/products-listing.component';
 import {ProductDetailsComponent} from './product-details/product-details.component';
 import {AddProductComponent} from './add-product/add-product.component';
-import { RouterModule } from '@angular/router';
+
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RoutingModule } from 'src/app/routing.module';
+import { ProductResolver } from './product.resolver';
 
 
 
@@ -22,17 +24,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule.forChild([
-      {path: 'products', children:[
-        {path:'', component:ProductsComponent},
-        {path: 'add', component:AddProductComponent},
-        {path: 'edit/:id',component:AddProductComponent},
-        {path: 'details/:id',component: ProductDetailsComponent}
-      ]}
-    ]),
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    RoutingModule
   ],
+  providers:[
+    ProductResolver
+  ]
   
 
 })

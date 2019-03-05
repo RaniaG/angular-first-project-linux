@@ -12,4 +12,7 @@ export class PaymentService{
     getAll(){
         return this.paymentTypes;
     }
+    getById(id:number):PaymentType{
+        return this.paymentTypes.find((x)=>x.id==id);
+    }
 }

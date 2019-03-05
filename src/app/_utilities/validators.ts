@@ -15,14 +15,14 @@ export class myValidators{
         var i=0;
         while(!countTrue&&i<arr.length-1)
         {
-            console.log(arr[i].value);
+            
             if(arr[i++].value)
                 countTrue=true;
         }
         var result=null;
         if(!countTrue)
         result={checked: "no items are checked"};
-        console.log(result);
+        
         return result;
     }
     

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TabsComponent } from 'src/app/shared/tabs/tabs.component';
 import { Product } from 'src/app/_model/product';
 import { CartService } from 'src/app/_services/cart.service';
+import { ProductService } from 'src/app/_services/product.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-details',
@@ -9,18 +11,29 @@ import { CartService } from 'src/app/_services/cart.service';
   styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
-   product:Product;
-   isSelected:number;
-   nItems:number;
-  constructor(private cartService:CartService) { 
-    this.product={
-      data:[{name:"Blue Ladies Handbag",description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus nibh sed elimttis adipiscing. Fusce in hendrerit purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus nibh sed elimttis adipiscing. Fusce in hendrerit purus."}], price: 22, 
-      tags:[], images:['assets/img/products/product-grey-7.jpg',
-      'assets/img/products/product-grey-7.jpg',
-    'assets/img/products/product-grey-7.jpg']
-    }
-    this.isSelected=0;
-    this.nItems=1;
+   private product:Product;
+   private isSelected:number;
+   private nItems:number;
+   private relatedProduts:Product[];
+  constructor(private cartService:CartService,private productService:ProductService,
+    private activatedRoute:ActivatedRoute
+    ) 
+    {
+      /** get product */
+      // var productId=parseInt(this.activatedRoute.snapshot.params.id);
+
+
+      /**Resolver */
+      // this.product=this.activatedRoute.snapshot.data['myProductResolver'];
+      
+      this.activatedRoute.data.subscribe(
+        (data)=>{ 
+          this.product=data['myProductResolver'];
+      });
+
+      this.isSelected=0;
+      this.nItems=1;
+      this.relatedProduts=this.productService.getRelatedProducts(this.product.id);
   }
 
   ngOnInit() {
@@ -29,5 +42,13 @@ export class ProductDetailsComponent implements OnInit {
   addToCart(){
     this.cartService.addToCart.next({product:this.product,count:this.nItems});
     // this.cartService.addProduct(this.product);
+  }
+  getProduct(){
+    this.activatedRoute.queryParams.subscribe(
+      (params)=>{
+        this.product=this.productService.getById(parseInt(params.id));
+      }
+    )
+    
   }
 }

@@ -18,6 +18,8 @@ import { LanguageService } from './_services/language.service';
 import { HomeComponent } from './features/home/home.component';
 import { ProductsModule } from './features/products/products.module';
 import { SharedModule } from './shared/shared.module';
+import { RoutingModule } from './routing.module';
+import { ProductResolver } from './features/products/product.resolver';
 
 
 
@@ -31,12 +33,9 @@ import { SharedModule } from './shared/shared.module';
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([
-      {path: '', component : HomeComponent},
-    ]),
-    
     ProductsModule,
-    SharedModule
+    SharedModule,
+    RoutingModule
   ],
   providers: [ProductService,SessionService,CartService,CategoryService,TagService,PaymentService,LanguageService],
   bootstrap: [AppComponent]

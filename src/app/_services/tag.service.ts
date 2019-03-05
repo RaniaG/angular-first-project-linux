@@ -33,4 +33,7 @@ export class TagService{
         return x.id;
         else return null;
     }
+    getById(id:number):Tag{
+        return this.tags.find((x)=>x.id==id);
+    }
 }
