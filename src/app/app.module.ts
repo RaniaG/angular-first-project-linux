@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {RouterModule} from '@angular/router';
 import { AppComponent } from './app.component';
 
 import { HeaderComponent } from './core/header/header.component';
@@ -16,10 +15,10 @@ import { TagService } from './_services/tag.service';
 import { PaymentService } from './_services/payment.service';
 import { LanguageService } from './_services/language.service';
 import { HomeComponent } from './features/home/home.component';
-import { ProductsModule } from './features/products/products.module';
 import { SharedModule } from './shared/shared.module';
 import { RoutingModule } from './routing.module';
-import { ProductResolver } from './features/products/product.resolver';
+
+
 
 
 
@@ -33,7 +32,6 @@ import { ProductResolver } from './features/products/product.resolver';
   ],
   imports: [
     BrowserModule,
-    ProductsModule,
     SharedModule,
     RoutingModule
   ],

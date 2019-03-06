@@ -5,15 +5,19 @@ import { Directive, Input, TemplateRef, ViewContainerRef, OnInit } from '@angula
 })
 export class RepeatDirective implements OnInit {
   
-  @Input('appRepeat') iterations:number
+  @Input('appRepeatOf') iterations:number
+  
   constructor(private template:TemplateRef<any>,private container:ViewContainerRef) { 
     
   }
   ngOnInit(): void {
+    // const input of this.iterations;
       if(this.iterations != undefined)
       {
         for (let i = 0; i < this.iterations; i++) 
-          this.container.createEmbeddedView(this.template);
+          {
+            this.container.createEmbeddedView(this.template,{$implicit: i+1});   
+          }
       }
 
   }

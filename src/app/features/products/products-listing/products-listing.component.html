@@ -20,7 +20,7 @@
             <i class="fas fa-angle-left"></i>
         </div>
         <!-- page number -->
-        <div class="paging__number" *ngFor="let dummy of ' '.repeat(itemsPerPage).split(''), let x = index">{{x+1}}</div>
+        <div class="paging__number" *appRepeat="let index of itemsPerPage">{{index}}</div>
 
         <!-- right arrow -->
         <div class="paging__arrow">
